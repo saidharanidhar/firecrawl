@@ -69,6 +69,8 @@ services:
     ports:
       - "${PORT:-3002}:${INTERNAL_PORT:-3002}"
     command: [ "pnpm", "run", "start:production" ]
+    labels:
+      - 'traefik.http.middlewares.mybasicauth.basicauth.users=service_user:$2y$05$xbZ9E8k2HdVoby4bsqSSSe0jyCOlk/3miigFdzU7pQOYZvpQZw.KK'
 
   worker:
     <<: *common-service
